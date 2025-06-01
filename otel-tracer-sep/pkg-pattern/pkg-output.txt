@@ -1,0 +1,664 @@
+Created user: new-id, John Doe
+Created order: order-new-id, total: 99.98
+Processed payment: pmt-order-new-id, status: completed
+Retrieved order: order-new-id
+Payment status: completed
+{
+	"Name": "CreateUser",
+	"SpanContext": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "ff60b6735f9caced",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "ada563950e4c3714",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:21.348411+09:00",
+	"EndTime": "2025-06-01T12:27:21.348413375+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "creating user in database",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:21.348412+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "pkg-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/user",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/user",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "CalculateTotal",
+	"SpanContext": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "7b91269e7538f782",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "2fc706d738dfa211",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:21.348454+09:00",
+	"EndTime": "2025-06-01T12:27:21.348454166+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "calculating order total",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:21.348454+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "pkg-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/order",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/order",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "CreateOrder",
+	"SpanContext": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "2fc706d738dfa211",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "ada563950e4c3714",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:21.348453+09:00",
+	"EndTime": "2025-06-01T12:27:21.348456083+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "creating order in database",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:21.348454+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "pkg-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/order",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/order",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "ValidatePayment",
+	"SpanContext": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "22425bffd9fcb581",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "a5effcdd03b5440e",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:21.348469+09:00",
+	"EndTime": "2025-06-01T12:27:21.348469167+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "validating payment details",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:21.348469+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "pkg-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/payment",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/payment",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "ExecutePayment",
+	"SpanContext": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "c1de4aecbabc03b1",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "22425bffd9fcb581",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:21.348471+09:00",
+	"EndTime": "2025-06-01T12:27:21.348471292+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "contacting payment gateway",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:21.348471+09:00"
+		},
+		{
+			"Name": "receiving payment confirmation",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:21.348471+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "pkg-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/payment",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/payment",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "ProcessPayment",
+	"SpanContext": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "a5effcdd03b5440e",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "ada563950e4c3714",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:21.348469+09:00",
+	"EndTime": "2025-06-01T12:27:21.348472083+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "processing payment",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:21.348469+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "pkg-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/payment",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/payment",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "ValidateOrder",
+	"SpanContext": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "7cce1aaa6914cae8",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "ae4876e421bd3a8a",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:21.348477+09:00",
+	"EndTime": "2025-06-01T12:27:21.348477167+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "validating order data",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:21.348477+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "pkg-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/order",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/order",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "GetOrder",
+	"SpanContext": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "ae4876e421bd3a8a",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "ada563950e4c3714",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:21.348477+09:00",
+	"EndTime": "2025-06-01T12:27:21.348480417+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "fetching order from database",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:21.348477+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "pkg-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/order",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/order",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "GetPaymentStatus",
+	"SpanContext": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "fccfc9034bdec8f3",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "ada563950e4c3714",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:21.348485+09:00",
+	"EndTime": "2025-06-01T12:27:21.348485208+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "checking payment status",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:21.348485+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "pkg-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/payment",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/pkg/payment",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "UserJourney",
+	"SpanContext": {
+		"TraceID": "83d4e525465e19e578ba76f6f2ab7345",
+		"SpanID": "ada563950e4c3714",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "00000000000000000000000000000000",
+		"SpanID": "0000000000000000",
+		"TraceFlags": "00",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:21.348403+09:00",
+	"EndTime": "2025-06-01T12:27:21.348488667+09:00",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 5,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "pkg-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/main",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/pkg-pattern/main",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}

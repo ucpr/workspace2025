@@ -1,0 +1,664 @@
+Created user: new-id, John Doe
+Created order: order-new-id, total: 99.98
+Processed payment: pmt-order-new-id, status: completed
+Retrieved order: order-new-id
+Payment status: completed
+{
+	"Name": "user.CreateUser",
+	"SpanContext": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "1e66a52c202d8eff",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "7a8847b7642b5c0d",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:23.074381+09:00",
+	"EndTime": "2025-06-01T12:27:23.07438375+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "creating user in database",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:23.074382+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "svc-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "order.CalculateTotal",
+	"SpanContext": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "94d6dfa104283080",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "44a2769edd847d4d",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:23.074426+09:00",
+	"EndTime": "2025-06-01T12:27:23.074426416+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "calculating order total",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:23.074426+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "svc-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "order.CreateOrder",
+	"SpanContext": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "44a2769edd847d4d",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "7a8847b7642b5c0d",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:23.074425+09:00",
+	"EndTime": "2025-06-01T12:27:23.074429167+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "creating order in database",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:23.074426+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "svc-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "payment.ValidatePayment",
+	"SpanContext": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "c89384bab27851dc",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "5cfb7095a56ca259",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:23.074444+09:00",
+	"EndTime": "2025-06-01T12:27:23.07444425+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "validating payment details",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:23.074444+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "svc-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "payment.ExecutePayment",
+	"SpanContext": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "c07432dea6ff2c88",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "c89384bab27851dc",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:23.074447+09:00",
+	"EndTime": "2025-06-01T12:27:23.074447416+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "contacting payment gateway",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:23.074447+09:00"
+		},
+		{
+			"Name": "receiving payment confirmation",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:23.074447+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "svc-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "payment.ProcessPayment",
+	"SpanContext": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "5cfb7095a56ca259",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "7a8847b7642b5c0d",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:23.074444+09:00",
+	"EndTime": "2025-06-01T12:27:23.074448417+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "processing payment",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:23.074444+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "svc-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "order.ValidateOrder",
+	"SpanContext": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "9bcbb22e785c2617",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "eec209c70de75f06",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:23.074454+09:00",
+	"EndTime": "2025-06-01T12:27:23.074454166+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "validating order data",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:23.074454+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "svc-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "order.GetOrder",
+	"SpanContext": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "eec209c70de75f06",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "7a8847b7642b5c0d",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:23.074454+09:00",
+	"EndTime": "2025-06-01T12:27:23.074455042+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "fetching order from database",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:23.074454+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "svc-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "payment.GetPaymentStatus",
+	"SpanContext": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "ca45260f88d95b31",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "7a8847b7642b5c0d",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:23.074459+09:00",
+	"EndTime": "2025-06-01T12:27:23.074459166+09:00",
+	"Attributes": null,
+	"Events": [
+		{
+			"Name": "checking payment status",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "2025-06-01T12:27:23.074459+09:00"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "svc-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
+{
+	"Name": "UserJourney",
+	"SpanContext": {
+		"TraceID": "c27ae4c0465607d8883192c3679e1c6a",
+		"SpanID": "7a8847b7642b5c0d",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "00000000000000000000000000000000",
+		"SpanID": "0000000000000000",
+		"TraceFlags": "00",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2025-06-01T12:27:23.074371+09:00",
+	"EndTime": "2025-06-01T12:27:23.074462541+09:00",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 5,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "svc-pattern-service"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "github.com/ucpr/otel-tracer-sep/svc-pattern",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}
