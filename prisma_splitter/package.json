@@ -1,0 +1,19 @@
+{
+  "name": "prisma-schema-splitter",
+  "version": "1.0.0",
+  "description": "Tool to analyze Prisma schema dependencies and split independent models",
+  "main": "prisma-schema-splitter.ts",
+  "scripts": {
+    "start": "ts-node prisma-schema-splitter.ts",
+    "build": "tsc",
+    "dev": "ts-node"
+  },
+  "dependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "MIT"
+}
