@@ -1,0 +1,53 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Output files
+output/
+*.json
+!package.json
+!tsconfig.json
+
+# Test files
+samples/
+test-files/
+*.pdf
+*.docx
+*.xlsx
+*.pptx
+
+# Google Cloud credentials
+*.json
+!package.json
+!tsconfig.json
+service-account*.json
+credentials*.json
+
+# Temporary files
+tmp/
+temp/

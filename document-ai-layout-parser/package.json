@@ -1,0 +1,32 @@
+{
+  "name": "document-ai-layout-parser",
+  "version": "1.0.0",
+  "description": "Google Cloud Document AI Layout Parser with TypeScript - Extract text, tables, and structured data from Office files",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "process": "ts-node src/process-document.ts",
+    "dev": "ts-node"
+  },
+  "keywords": [
+    "google-cloud",
+    "document-ai",
+    "layout-parser",
+    "pdf-extraction",
+    "table-extraction",
+    "office-files"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/documentai": "^9.2.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
