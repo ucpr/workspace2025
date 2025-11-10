@@ -3,11 +3,15 @@
  * Example usage of the Document AI Layout Parser
  */
 
+// Load environment variables from .env file
+import 'dotenv/config';
+
 import * as fs from 'fs';
 import * as path from 'path';
 import { LayoutParser } from './layout-parser';
 import { loadConfig, validateConfig } from './config';
 import { ExtractionResult } from './types';
+import { convertToMarkdown } from './markdown-converter';
 
 /**
  * Format extraction results for display
@@ -82,6 +86,21 @@ function saveResults(result: ExtractionResult, outputPath: string): void {
 }
 
 /**
+ * Save extraction results as Markdown file
+ */
+function saveMarkdown(result: ExtractionResult, outputPath: string): void {
+  const markdown = convertToMarkdown(result, {
+    includePageSeparators: true,
+    includeConfidence: true,
+    includeBoundingBox: false,
+    includeMetadata: true,
+    pageHeadingLevel: 2,
+  });
+  fs.writeFileSync(outputPath, markdown, 'utf-8');
+  console.log(`📝 Markdown saved to: ${outputPath}`);
+}
+
+/**
  * Main processing function
  */
 async function main() {
@@ -146,7 +165,7 @@ async function main() {
     // Display results
     formatResults(result);
 
-    // Save results to JSON file
+    // Save results to JSON and Markdown files
     const outputDir = path.join(process.cwd(), 'output');
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
@@ -154,8 +173,11 @@ async function main() {
 
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     const baseName = path.basename(filePath, path.extname(filePath));
-    const outputPath = path.join(outputDir, `${baseName}_${timestamp}.json`);
-    saveResults(result, outputPath);
+    const jsonOutputPath = path.join(outputDir, `${baseName}_${timestamp}.json`);
+    const mdOutputPath = path.join(outputDir, `${baseName}_${timestamp}.md`);
+
+    saveResults(result, jsonOutputPath);
+    saveMarkdown(result, mdOutputPath);
 
     // Close the client
     await parser.close();

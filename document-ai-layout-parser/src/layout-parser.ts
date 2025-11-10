@@ -82,16 +82,55 @@ export class LayoutParser {
       throw new Error('No document returned from processing');
     }
 
-    // Extract content
-    const textBlocks = extractTextBlocks ? this.extractTextBlocks(document, minConfidence) : [];
-    const tables = extractTables ? this.extractTables(document, minConfidence) : [];
-    const fullText = document.text || '';
+    // Debug: Log document structure
+    console.log('\n=== Document Structure Debug ===');
+    console.log('Has pages:', !!document.pages);
+    console.log('Has documentLayout:', !!(document as any).documentLayout);
+    console.log('Has text:', !!document.text);
+    if (document.pages) {
+      console.log('Pages count:', document.pages.length);
+    }
+    if ((document as any).documentLayout) {
+      console.log('DocumentLayout blocks count:', (document as any).documentLayout?.blocks?.length);
+    }
+
+    // Save full document for debugging
+    const debugPath = './debug-document.json';
+    require('fs').writeFileSync(debugPath, JSON.stringify(document, null, 2));
+    console.log(`Full document saved to: ${debugPath}`);
+    console.log('=================================\n');
+
+    // Extract content - support both old (pages) and new (documentLayout) formats
+    let textBlocks: TextBlock[] = [];
+    let tables: ExtractedTable[] = [];
+    let fullText = '';
+    let pageCount = 0;
+
+    // Check if using new documentLayout format
+    const docLayout = (document as any).documentLayout;
+    if (docLayout && docLayout.blocks) {
+      console.log('Using new documentLayout.blocks format');
+      const extracted = this.extractFromDocumentLayout(docLayout, minConfidence, extractTextBlocks, extractTables);
+      textBlocks = extracted.textBlocks;
+      tables = extracted.tables;
+      fullText = extracted.fullText;
+      pageCount = 1; // documentLayout doesn't have explicit page count
+    } else if (document.pages) {
+      console.log('Using legacy pages format');
+      textBlocks = extractTextBlocks ? this.extractTextBlocks(document, minConfidence) : [];
+      tables = extractTables ? this.extractTables(document, minConfidence) : [];
+      fullText = document.text || '';
+      pageCount = document.pages.length;
+    } else {
+      console.warn('Unknown document format - no pages or documentLayout found');
+      fullText = document.text || '';
+    }
 
     return {
       textBlocks,
       tables,
       fullText,
-      pageCount: document.pages?.length || 0,
+      pageCount,
       mimeType,
       metadata: {
         processorVersion: this.config.processorVersion || 'latest',
@@ -145,15 +184,55 @@ export class LayoutParser {
       throw new Error('No document returned from processing');
     }
 
-    const textBlocks = extractTextBlocks ? this.extractTextBlocks(document, minConfidence) : [];
-    const tables = extractTables ? this.extractTables(document, minConfidence) : [];
-    const fullText = document.text || '';
+    // Debug: Log document structure
+    console.log('\n=== Document Structure Debug (Buffer) ===');
+    console.log('Has pages:', !!document.pages);
+    console.log('Has documentLayout:', !!(document as any).documentLayout);
+    console.log('Has text:', !!document.text);
+    if (document.pages) {
+      console.log('Pages count:', document.pages.length);
+    }
+    if ((document as any).documentLayout) {
+      console.log('DocumentLayout blocks count:', (document as any).documentLayout?.blocks?.length);
+    }
+
+    // Save full document for debugging
+    const debugPath = './debug-document-buffer.json';
+    require('fs').writeFileSync(debugPath, JSON.stringify(document, null, 2));
+    console.log(`Full document saved to: ${debugPath}`);
+    console.log('=================================\n');
+
+    // Extract content - support both old (pages) and new (documentLayout) formats
+    let textBlocks: TextBlock[] = [];
+    let tables: ExtractedTable[] = [];
+    let fullText = '';
+    let pageCount = 0;
+
+    // Check if using new documentLayout format
+    const docLayout = (document as any).documentLayout;
+    if (docLayout && docLayout.blocks) {
+      console.log('Using new documentLayout.blocks format');
+      const extracted = this.extractFromDocumentLayout(docLayout, minConfidence, extractTextBlocks, extractTables);
+      textBlocks = extracted.textBlocks;
+      tables = extracted.tables;
+      fullText = extracted.fullText;
+      pageCount = 1; // documentLayout doesn't have explicit page count
+    } else if (document.pages) {
+      console.log('Using legacy pages format');
+      textBlocks = extractTextBlocks ? this.extractTextBlocks(document, minConfidence) : [];
+      tables = extractTables ? this.extractTables(document, minConfidence) : [];
+      fullText = document.text || '';
+      pageCount = document.pages.length;
+    } else {
+      console.warn('Unknown document format - no pages or documentLayout found');
+      fullText = document.text || '';
+    }
 
     return {
       textBlocks,
       tables,
       fullText,
-      pageCount: document.pages?.length || 0,
+      pageCount,
       mimeType,
       metadata: {
         processorVersion: this.config.processorVersion || 'latest',
@@ -163,7 +242,170 @@ export class LayoutParser {
   }
 
   /**
-   * Extract text blocks with structure information
+   * Extract content from new documentLayout format
+   */
+  private extractFromDocumentLayout(
+    documentLayout: any,
+    minConfidence: number,
+    extractTextBlocks: boolean,
+    extractTables: boolean
+  ): { textBlocks: TextBlock[]; tables: ExtractedTable[]; fullText: string } {
+    const textBlocks: TextBlock[] = [];
+    const tables: ExtractedTable[] = [];
+    const fullTextParts: string[] = [];
+
+    if (!documentLayout.blocks) {
+      return { textBlocks, tables, fullText: '' };
+    }
+
+    documentLayout.blocks.forEach((block: any, blockIndex: number) => {
+      // Extract text blocks
+      if (block.textBlock && extractTextBlocks) {
+        const textBlock = block.textBlock;
+        const text = textBlock.text || '';
+        const type = this.mapTextBlockType(textBlock.type);
+
+        if (text) {
+          fullTextParts.push(text);
+          textBlocks.push({
+            text,
+            type,
+            confidence: 1.0, // documentLayout doesn't provide confidence scores
+            pageNumber: 1, // documentLayout doesn't have page numbers
+            boundingBox: undefined, // documentLayout doesn't provide bounding boxes in this format
+          });
+        }
+      }
+
+      // Extract tables
+      if (block.tableBlock && extractTables) {
+        const tableBlock = block.tableBlock;
+        const extractedTable = this.extractTableFromTableBlock(tableBlock, blockIndex);
+
+        if (extractedTable) {
+          tables.push(extractedTable);
+
+          // Add table text to fullText
+          const tableText = this.tableToText(extractedTable);
+          if (tableText) {
+            fullTextParts.push(tableText);
+          }
+        }
+      }
+    });
+
+    return {
+      textBlocks,
+      tables,
+      fullText: fullTextParts.join('\n\n'),
+    };
+  }
+
+  /**
+   * Map textBlock type to our TextBlock type
+   */
+  private mapTextBlockType(type: string | undefined): TextBlock['type'] {
+    if (!type) {
+      return 'paragraph';
+    }
+
+    const typeLower = type.toLowerCase();
+    if (typeLower.includes('heading')) {
+      return 'heading';
+    }
+    if (typeLower.includes('title')) {
+      return 'title';
+    }
+    if (typeLower.includes('list')) {
+      return 'list';
+    }
+    if (typeLower.includes('footer') || typeLower.includes('header')) {
+      return 'other';
+    }
+    return 'paragraph';
+  }
+
+  /**
+   * Extract table from tableBlock
+   */
+  private extractTableFromTableBlock(tableBlock: any, blockIndex: number): ExtractedTable | null {
+    if (!tableBlock.bodyRows || tableBlock.bodyRows.length === 0) {
+      return null;
+    }
+
+    const bodyRows = tableBlock.bodyRows;
+    const headerRows = tableBlock.headerRows || [];
+
+    // Extract headers
+    const headers: string[][] = [];
+    headerRows.forEach((row: any) => {
+      if (row.cells) {
+        const headerCells = row.cells.map((cell: any) => this.extractTextFromCell(cell));
+        headers.push(headerCells);
+      }
+    });
+
+    // Extract body rows
+    const rows: string[][] = [];
+    let columnCount = 0;
+
+    bodyRows.forEach((row: any) => {
+      if (row.cells) {
+        const rowCells = row.cells.map((cell: any) => this.extractTextFromCell(cell));
+        rows.push(rowCells);
+        columnCount = Math.max(columnCount, rowCells.length);
+      }
+    });
+
+    return {
+      pageNumber: 1,
+      rowCount: rows.length,
+      columnCount,
+      headers,
+      rows,
+      confidence: 1.0, // documentLayout doesn't provide confidence
+      boundingBox: undefined,
+    };
+  }
+
+  /**
+   * Extract text from a table cell
+   */
+  private extractTextFromCell(cell: any): string {
+    const textParts: string[] = [];
+
+    if (cell.blocks) {
+      cell.blocks.forEach((block: any) => {
+        if (block.textBlock && block.textBlock.text) {
+          textParts.push(block.textBlock.text);
+        }
+      });
+    }
+
+    return textParts.join(' ').trim();
+  }
+
+  /**
+   * Convert table to plain text representation
+   */
+  private tableToText(table: ExtractedTable): string {
+    const lines: string[] = [];
+
+    // Add headers
+    table.headers.forEach((headerRow) => {
+      lines.push(headerRow.join(' | '));
+    });
+
+    // Add rows
+    table.rows.forEach((row) => {
+      lines.push(row.join(' | '));
+    });
+
+    return lines.join('\n');
+  }
+
+  /**
+   * Extract text blocks with structure information (legacy format)
    */
   private extractTextBlocks(document: Document, minConfidence: number): TextBlock[] {
     const textBlocks: TextBlock[] = [];

@@ -3,8 +3,13 @@
  * This demonstrates how to use the parser in your own code
  */
 
+// Load environment variables from .env file
+import 'dotenv/config';
+
 import { LayoutParser } from './layout-parser';
 import { LayoutParserConfig } from './types';
+import { convertToMarkdown, convertToPlainMarkdown } from './markdown-converter';
+import * as fs from 'fs';
 
 /**
  * Example 1: Basic usage with file path
@@ -100,7 +105,6 @@ async function example2() {
 async function example3() {
   console.log('\nExample 3: Process from Buffer\n');
 
-  const fs = require('fs');
   const config: LayoutParserConfig = {
     projectId: process.env.GOOGLE_CLOUD_PROJECT || 'your-project-id',
     location: 'us',
@@ -167,6 +171,57 @@ async function example4() {
   }
 }
 
+/**
+ * Example 5: Convert to Markdown
+ */
+async function example5() {
+  console.log('\nExample 5: Convert to Markdown\n');
+
+  const config: LayoutParserConfig = {
+    projectId: process.env.GOOGLE_CLOUD_PROJECT || 'your-project-id',
+    location: 'us',
+    processorId: process.env.DOCUMENTAI_PROCESSOR_ID || 'your-processor-id',
+  };
+
+  const parser = new LayoutParser(config);
+
+  try {
+    // Process document
+    const result = await parser.processDocument('./document.pdf', {
+      extractTables: true,
+      extractTextBlocks: true,
+      minConfidence: 0.5,
+    });
+
+    // Convert to Markdown with full options
+    const markdown = convertToMarkdown(result, {
+      includePageSeparators: true,
+      includeConfidence: true,
+      includeBoundingBox: false,
+      includeMetadata: true,
+      pageHeadingLevel: 2,
+    });
+
+    // Save to file
+    fs.writeFileSync('./output.md', markdown, 'utf-8');
+    console.log('Markdown saved to: ./output.md');
+
+    // Preview first 500 characters
+    console.log('\nMarkdown preview:');
+    console.log(markdown.substring(0, 500));
+    console.log('...\n');
+
+    // Also create a simple plain text version
+    const plainMarkdown = convertToPlainMarkdown(result);
+    fs.writeFileSync('./output-plain.md', plainMarkdown, 'utf-8');
+    console.log('Plain markdown saved to: ./output-plain.md');
+  } catch (error) {
+    console.error('Error:', error);
+  } finally {
+    await parser.close();
+  }
+}
+
 // Run examples
 if (require.main === module) {
   console.log('Document AI Layout Parser - Examples\n');
@@ -180,8 +235,9 @@ if (require.main === module) {
   // example2();
   // example3();
   // example4();
+  // example5();
 
   console.log('\nUncomment an example function in example.ts to run it.');
 }
 
-export { example1, example2, example3, example4 };
+export { example1, example2, example3, example4, example5 };
